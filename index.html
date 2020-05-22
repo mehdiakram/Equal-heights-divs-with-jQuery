@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Equal heights divs with jQuery</title>
+	<style>
+  .column {
+    background: #ddd;
+    float: left;
+    width: 30%;
+    text-align: center;
+    margin: 1px;}
+	</style>
+</head>
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<div class="container">
+    <div class="column">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+    <div class="column">One line</div>
+    <div class="column">Two<br>lines</div>
+    <div class="column">Three<br> line<br>here</div>
+    <div class="column">Four<br>lines<br>text<br>here</div>
+    <div class="column">Here <br>have<br>five<br>lines<br>text</div>
+</div>
+<script>
+$(document).ready(function(){
+    // Select and loop the container element of the elements you want to equalise
+    $('.container').each(function(){  
+      // Cache the highest
+      var highestBox = 0;
+      // Select and loop the elements you want to equalise
+      $('.column', this).each(function(){
+        // If this box is higher than the cached highest then store it
+        if($(this).height() > highestBox) {
+          highestBox = $(this).height(); 
+        }
+      });   
+      // Set the height of all those children to whichever was highest 
+      $('.column',this).height(highestBox);              
+    });
+});
+</script>
+</body>
+</html>
